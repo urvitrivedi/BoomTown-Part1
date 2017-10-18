@@ -1,0 +1,44 @@
+.logo{
+    height: 2.3rem;
+    margin: .5rem;
+}
+
+.header{
+    background: white;
+    width:100%;
+}
+
+@media screen and (max-width: 602px){
+    .width{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+/* Flex */
+
+.flex {
+	display: flex;
+}
+
+/*Justify-Content*/
+
+.justify-between{
+	justify-content: space-between;
+}
+.justify-around{
+	justify-content: space-around;
+}
+.margin-header-btn{
+    margin:0.5rem;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.DropDown{
+
+}
+

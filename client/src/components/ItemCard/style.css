@@ -1,0 +1,15 @@
+.individual-card-container{
+    padding:.5rem
+}
+
+@media screen and (min-width: 600px){
+    .individual-card-container{
+        width:50%;
+    }
+}
+
+@media screen and (min-width: 960px){
+    .individual-card-container{
+        width: 33.33%;
+    }
+}
