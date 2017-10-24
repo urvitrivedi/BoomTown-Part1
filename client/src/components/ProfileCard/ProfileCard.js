@@ -1,23 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Card} from 'material-ui/Card';
 import Gravatar from 'react-gravatar'
-
 import './styles.css';
 
-const ProfileCard = ({itemsData, profileData}) => (
+const ProfileCard = ({profileData}) => (
     <Card className="profileCard">
-        <div className="profile">
-            <div className="profileUser">
-                <p>{profileData.fullname}</p>
-                <p>{profileData.bio}</p>
+        <div className="profileWrapper">
+            <div className="profileDetail">
+                <div className="profileUser">
+                    <p>{profileData.fullname}</p>
+                    <p>{profileData.bio}</p>
+                </div>
             </div>
             <div className="profileSummary">
                 <div>
-                    <div className="profileItem">
+                    <div className="summaryCount">
                         <p>{profileData.shared}</p>
                         <p>Items shared</p>
                     </div>
-                    <div className="profileItem">
+                    <div className="summaryCount">
                         <p>{profileData.borrowed}</p>
                         <p>Items borrowed</p>
                     </div>
@@ -29,5 +31,17 @@ const ProfileCard = ({itemsData, profileData}) => (
         </div>
     </Card>
 );
+
+ProfileCard.propTypes = {
+    profileData: PropTypes.shape({
+        id: PropTypes.string,
+        fullname: PropTypes.string,
+        email: PropTypes.string,
+        bio: PropTypes.string,
+        shared: PropTypes.number,
+        borrowed: PropTypes.number,
+        borroweditems: PropTypes.array
+    })
+};
 
 export default ProfileCard;

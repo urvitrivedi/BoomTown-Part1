@@ -10,6 +10,7 @@ class ItemsContainer extends Component{
 
     componentDidMount(){
         this.props.fetchItemsAndUsers();
+        this.props.handleDropDown();
     }
     
     render(){
@@ -28,6 +29,7 @@ class ItemsContainer extends Component{
 const mapStateToProps = state => ({
     itemsData:state.items.itemsData,// items is from Reducer -> itemsData is from items.js(redux/modules)
     isLoading:state.items.isLoading,
+    tagData:state.items.tagData
 });
 
 export default connect(mapStateToProps, actions)(ItemsContainer);

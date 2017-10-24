@@ -63,19 +63,11 @@ Promise.all(urls.map(url =>
                 item.borrower = itemborrower.fullname;
             }
 
-            item.tags.map((tag) => {
-                if (tagData.indexOf(tag) === -1) {
-                    tagData.push(tag)
-                }
-               // console.log(tag);
-               return tag;
-                
-            });
         // Finally return the item object individually
         return item;
     })
     dispatch(getItems(dataArray));
-    dispatch(getUserItems(dataArray));
+    
 })
 .catch(err => {
     dispatch(getItemsError(err));
@@ -88,7 +80,7 @@ export default (state={
     tagData:[],
     isLoading:false,
     error:''
-}, action) => {
+    }, action) => {
     switch (action.type){
         case GET_ITEMS:
         return {...state, itemsData: action.payload, isLoading:false, error: ''};

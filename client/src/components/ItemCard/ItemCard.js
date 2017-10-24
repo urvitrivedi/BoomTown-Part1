@@ -16,39 +16,45 @@ const ItemCard = ({item}) => {
             return (
                 <div className="">
                <Card>
-               
-               <a href={`/profile/${item.itemowner.id}`}>  
-                <CardMedia
-                
-                overlay= {item.available ? null : <CardTitle title= "" subtitle= {`Lent to ${item.borrower}`} />}
-                //{<CardTitle title="Overlay title" />
-                >
-                <img src={item.imageurl} alt="" />
-                </CardMedia>
-                <CardHeader
-                    title={item.itemowner.fullname}
-                    //subtitle={item.created}
-                    //subtitle={moment(item.created).fromNow()}
-                    //subtitle={formatDistance(subDays(new Date(), {item.created}), new Date())}
-                    subtitle= {`${distanceInWords(item.created, startOfToday())} ago `}
-                    avatar={<Gravatar email = {item.itemowner.email} />}
-                /></a>
-                <CardTitle title={item.title} subtitle={item.tags.map((tag, i) =>
-                i > 0 ? ', ' + tag : tag )} />
+                <a href={`/profile/${item.itemowner.id}`}>  
+                    <CardMedia overlay= {item.available ? null : <CardTitle title= "" subtitle= {`Lent to ${item.borrower}`} />}>
+                        <img src={item.imageurl} alt="" />
+                    </CardMedia>
+                    <CardHeader
+                        title={item.itemowner.fullname}
+                        subtitle= {`${distanceInWords(item.created, startOfToday())} ago `}
+                        avatar={<Gravatar email = {item.itemowner.email} />} 
+                    />
+                </a>
+                <CardTitle title={item.title} subtitle={item.tags.map((tag, i) => i > 0 ? ', ' + tag : tag )} />
                 <CardText>
-                {item.description}
+                    {item.description}
                 </CardText>
                 <CardActions>
-                {item.available ? <RaisedButton label="BORROW" secondary={true} /> : ''}
+                    {item.available ? <RaisedButton label="BORROW" secondary={true} /> : ''}
                 </CardActions>
-                
                 </Card>
              </div>
 );
 }// End const ItemCard
 
 ItemCard.propTypes = {
-    
+    item: PropTypes.shape({
+        available: PropTypes.bool,
+        borrower: PropTypes.string,
+        created: PropTypes.string,
+        description: PropTypes.string,
+        id: PropTypes.number,
+        imageurl: PropTypes.string,
+        itemowner: PropTypes.shape({
+            bio: PropTypes.string,
+            email: PropTypes.string,
+            fullname: PropTypes.string,
+            id: PropTypes.string
+        }),
+        tags: PropTypes.array,
+        title: PropTypes.string
+    })
 };
 
 export default ItemCard;
